@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: chainkings/wan:latest
+          tags: teknetz/wan:latest
