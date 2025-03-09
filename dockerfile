@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install PyTorch
 RUN pip3 install --no-cache-dir --upgrade pip
 RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
+RUN pip3 install easydict
 # Clone and setup Wan2.1
 WORKDIR /app
 RUN git clone https://github.com/Wan-Video/Wan2.1.git
@@ -23,6 +23,6 @@ RUN mkdir -p /app/models
 EXPOSE 7860
 
 # Setup entrypoint
-COPY entrypoint.sh /app/
+COPY app/entrypoint.sh /app/
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
