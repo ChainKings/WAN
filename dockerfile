@@ -18,9 +18,10 @@ WORKDIR /app
 RUN git clone https://github.com/Wan-Video/Wan2.1.git
 WORKDIR /app/Wan2.1
 
-# Install core dependencies
+# Install core dependencies with specific version constraints
+RUN pip install --no-cache-dir "numpy<2.0.0" # Ensure NumPy 1.x compatibility
 RUN pip install --no-cache-dir transformers diffusers accelerate einops open-clip-torch moviepy sentencepiece ftfy
-RUN pip install --no-cache-dir xfuser huggingface_hub gradio
+RUN pip install --no-cache-dir xfuser huggingface_hub gradio easydict
 
 # Create model directory
 RUN mkdir -p /app/models
